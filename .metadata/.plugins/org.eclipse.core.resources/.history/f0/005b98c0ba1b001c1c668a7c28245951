@@ -1,0 +1,26 @@
+package com.app.registration.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.registration.model.User;
+import com.app.registration.service.RegistrationService;
+
+@RestController
+public class RegistrationController {
+	
+	
+	@Autowired
+	private RegistrationService service;
+	
+	@GetMapping("/registeruser")
+	public User registerUser(@RequestBody User user) {
+		User userobj = null;
+		userobj = service.saveUser(user);
+		return userobj;
+		
+	}
+}
